@@ -13,8 +13,8 @@ namespace gcf
     {
     public:
         unsigned int winWidth, winHeight;   //Size of the Window in Pixels
-        int cellcountX, cellcountY;     //# of Cells in X and Y direction
-        int cellX, cellY;       //Size of the Cells in Pixels
+        unsigned int cellcountX, cellcountY;     //# of Cells in X and Y direction
+        unsigned int cellX, cellY;       //Size of the Cells in Pixels
 
         Config(unsigned int winWidth, unsigned int winHeight, unsigned int cellcountX, unsigned int cellcountY);
     };

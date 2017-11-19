@@ -18,11 +18,12 @@ namespace gcf
         Config conf;
         Grid grid;
         sf::RenderWindow window;
-        bool mouseIsPressed;
 
         void handleEvents();
+        void handleInput();
         void draw();
-        void cellClicked(sf::Vector2i mousPos);
+        void cellClicked();
+        bool mouseInWindow();
 
     public:
 

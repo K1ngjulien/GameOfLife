@@ -28,6 +28,8 @@ namespace gcf
 
         void draw(sf::RenderWindow &window);
         void setColor(sf::Color color);
+        void clicked();
+        void setState(State state);
     };
 
 

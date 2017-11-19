@@ -53,4 +53,15 @@ namespace gcf
         }
     }
 
+    bool Grid::cellClicked(unsigned int x, unsigned int y)
+    {
+        if((x < grid.size()) && (y<grid[0].size()))
+        {
+            grid[x][y].clicked();
+            return true;
+        }
+        else
+            return false;
+    }
+
 }

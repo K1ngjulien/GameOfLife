@@ -11,7 +11,6 @@ namespace gcf
     Application::Application(Config config)
     :conf(config)
     ,grid(config)
-    ,mouseIsPressed(false)
     {
         window.create (sf::VideoMode(config.winWidth, config.winHeight), "GCF",sf::Style::Titlebar | sf::Style::Close);
     }
@@ -20,12 +19,8 @@ namespace gcf
     {
         while (window.isOpen())
         {
+            handleInput();
             handleEvents();
-
-            if(mouseIsPressed)
-            {
-                cellClicked(sf::Mouse::getPosition(window));
-            }
 
             //Drawing of all Objects
             window.clear(sf::Color::White);
@@ -43,24 +38,6 @@ namespace gcf
        {
            switch (e.type)
            {
-               case sf::Event::MouseButtonPressed:
-               {
-                   mouseIsPressed = true;
-                   break;
-               }
-               case sf::Event::MouseButtonReleased:
-               {
-                   mouseIsPressed = false;
-                   break;
-               }
-               case sf::Event::KeyPressed:
-               {
-                   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::R))
-                   {
-                       grid.clear(sf::Color::White);
-                   }
-                   break;
-               }
                case sf::Event::Closed:
                    window.close();
                    break;
@@ -70,23 +47,36 @@ namespace gcf
        }
     }
 
+    void Application::handleInput()
+    {
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::R))
+        {
+            grid.clear(sf::Color::White);
+        }
+
+        if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+        {
+            if(mouseInWindow())
+            {
+                cellClicked();
+            }
+        }
+    }
+
+
     void Application::draw()
     {
         grid.draw(window);
     }
 
-    void Application::cellClicked(sf::Vector2i mousPos)
+    bool Application::mouseInWindow()
     {
-        Cell * clickedCell = grid.getCell(floor(mousPos.x/conf.cellX),floor(mousPos.y/conf.cellY));
+        return ((sf::Mouse::getPosition(window).x < conf.winWidth) && (sf::Mouse::getPosition(window).y < conf.winHeight));
+    }
 
-        if(clickedCell != nullptr)
-        {
-            clickedCell->setColor(sf::Color::Blue);
-        }
-        else
-        {
-            std::cout<<"Null";
-        }
+    void Application::cellClicked()
+    {
+        grid.cellClicked(sf::Mouse::getPosition(window).x/conf.cellX , sf::Mouse::getPosition(window).y/conf.cellY);
     }
 
 }

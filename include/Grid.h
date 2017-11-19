@@ -12,7 +12,6 @@
 
 namespace gcf
 {
-
     class Grid
     {
     private:
@@ -25,6 +24,7 @@ namespace gcf
 
         void draw(sf::RenderWindow &window);
         void clear(sf::Color color);
+        bool cellClicked(unsigned int x, unsigned int y);
 
     };
 
