@@ -7,7 +7,7 @@
 
 #include <cmath>
 
-namespace gc
+namespace gcf
 {
     class Config
     {
@@ -16,7 +16,7 @@ namespace gc
         int cellcountX, cellcountY;     //# of Cells in X and Y direction
         int cellX, cellY;       //Size of the Cells in Pixels
 
-        Config(int winWidth, int winHeight, int cellcountX, int cellcountY);
+        Config(unsigned int winWidth, unsigned int winHeight, unsigned int cellcountX, unsigned int cellcountY);
     };
 
 }

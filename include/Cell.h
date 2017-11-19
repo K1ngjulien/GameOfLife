@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include "Config.h"
 
-namespace gc
+namespace gcf
 {
 
     enum State

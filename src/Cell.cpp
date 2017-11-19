@@ -4,7 +4,7 @@
 
 #include "../include/Cell.h"
 
-namespace gc
+namespace gcf
 {
 
     Cell::Cell(int x,int y, Config conf,State state)

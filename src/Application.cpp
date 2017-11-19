@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-namespace gc
+namespace gcf
 {
     Application::Application(Config config)
     :conf(config)

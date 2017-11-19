@@ -10,7 +10,7 @@
 #include "Cell.h"
 #include <SFML/Graphics.hpp>
 
-namespace gc
+namespace gcf
 {
     class Application
     {

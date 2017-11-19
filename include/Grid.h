@@ -10,18 +10,18 @@
 #include "Cell.h"
 #include <vector>
 
-namespace gc
+namespace gcf
 {
 
     class Grid
     {
     private:
-        std::vector<std::vector<gc::Cell>> grid;
+        std::vector<std::vector<gcf::Cell>> grid;
 
     public:
-        Grid(Config conf);
+        explicit Grid(Config conf);
 
-        gc::Cell* getCell(int x, int y);
+        gcf::Cell* getCell(int x, int y);
 
         void draw(sf::RenderWindow &window);
         void clear(sf::Color color);

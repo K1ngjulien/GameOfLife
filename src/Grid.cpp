@@ -5,7 +5,7 @@
 #include "../include/Grid.h"
 
 #include <iostream>
-namespace gc
+namespace gcf
 {
 
     Grid::Grid(Config conf)

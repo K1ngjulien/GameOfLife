@@ -4,9 +4,9 @@
 
 #include "../include/Config.h"
 
-namespace gc
+namespace gcf
 {
-    Config::Config(int winWidth, int winHeight, int cellcountX, int cellcountY)
+    Config::Config(unsigned int winWidth, unsigned int winHeight, unsigned int cellcountX, unsigned int cellcountY)
             : winWidth(winWidth),winHeight(winHeight), cellcountX(cellcountX),cellcountY(cellcountY)
     {
         cellX = floor(winWidth/cellcountX);
