@@ -4,15 +4,16 @@
 
 #include "../include/Application.h"
 
-#include <iostream>
 
 namespace gcf
 {
     Application::Application(Config config)
     :conf(config)
     ,grid(config)
+    ,runUpdate(false)
     {
-        window.create (sf::VideoMode(config.winWidth, config.winHeight), "GCF",sf::Style::Titlebar | sf::Style::Close);
+        window.create (sf::VideoMode(config.winWidth, config.winHeight), "Game of Life",sf::Style::Titlebar | sf::Style::Close);
+        window.setFramerateLimit(15);
     }
 
     int Application:: run()
@@ -21,6 +22,9 @@ namespace gcf
         {
             handleInput();
             handleEvents();
+
+            if (runUpdate)
+                grid.update();
 
             //Drawing of all Objects
             window.clear(sf::Color::White);
@@ -42,19 +46,22 @@ namespace gcf
                    window.close();
                    break;
            }
-
-
        }
     }
 
     void Application::handleInput()
     {
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::R))
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
         {
-            grid.clear(sf::Color::White);
+            runUpdate = true;
         }
 
-        if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::P))
+        {
+            runUpdate = false;
+        }
+
+        if((sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))||(sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)))
         {
             if(mouseInWindow())
             {

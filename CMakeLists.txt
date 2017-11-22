@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9)
-set(PROJECT_NAME GridCellFramework) #Project name as a Variable for Changeability
+set(PROJECT_NAME GameOfLife) #Project name as a Variable for Changeability
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 17)

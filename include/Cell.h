@@ -6,14 +6,14 @@
 #define GRIDCELLFRAMEWORK_CELL_H
 
 #include <SFML/Graphics.hpp>
+#include <vector>
 #include "Config.h"
 
 namespace gcf
 {
-
     enum State
     {
-        Wall,Path
+        Dead,Alive
     };
 
     class Cell {
@@ -25,12 +25,14 @@ namespace gcf
 
     public:
         Cell(int x,int y, Config conf,State state);
-
+        void update(std::vector<std::vector<gcf::Cell>>&grid,gcf::Config &conf);
         void draw(sf::RenderWindow &window);
         void setColor(sf::Color color);
         void clicked();
         void setState(State state);
+        State getState();
     };
+
 
 
 }

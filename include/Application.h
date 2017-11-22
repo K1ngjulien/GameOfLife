@@ -18,6 +18,7 @@ namespace gcf
         Config conf;
         Grid grid;
         sf::RenderWindow window;
+        bool runUpdate;
 
         void handleEvents();
         void handleInput();

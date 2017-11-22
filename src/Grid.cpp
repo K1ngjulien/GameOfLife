@@ -9,18 +9,28 @@ namespace gcf
 {
 
     Grid::Grid(Config conf)
+    :conf(conf)
     {
         std::vector<Cell> col;
         for(int i = 0; i<conf.cellcountX;i++)
         {
             for (int j = 0; j < conf.cellcountY; j++)
             {
-                col.emplace_back(Cell(i,j,conf,State::Path));
+                col.emplace_back(Cell(i,j,conf,State::Dead));
                 //std::cout<<"Generating:"<<i<<","<<j<<std::endl;
             }
             grid.push_back(col);
             col.clear();
         }
+        std::vector<gcf::Cell*> neighbors;
+
+
+        /*Adding Neighbors to reach cell
+        UL|MU|UR
+        ML|CE|MR
+        LL|ML|MR
+        */
+
     }
 
     Cell *Grid::getCell(int x, int y)
@@ -30,6 +40,7 @@ namespace gcf
         else
             return nullptr;
     }
+
 
     void Grid::draw(sf::RenderWindow &window)
     {
@@ -63,5 +74,19 @@ namespace gcf
         else
             return false;
     }
+
+    void Grid::update()
+    {
+        std::vector<std::vector<gcf::Cell>>cpGrid = grid;
+        for(auto &coll : grid)
+        {
+            for(auto &cell : coll)
+            {
+                cell.update(cpGrid,conf);
+            }
+        }
+    }
+
+
 
 }

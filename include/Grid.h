@@ -16,13 +16,14 @@ namespace gcf
     {
     private:
         std::vector<std::vector<gcf::Cell>> grid;
-
+        gcf::Config conf;
     public:
         explicit Grid(Config conf);
 
         gcf::Cell* getCell(int x, int y);
 
         void draw(sf::RenderWindow &window);
+        void update();
         void clear(sf::Color color);
         bool cellClicked(unsigned int x, unsigned int y);
 
