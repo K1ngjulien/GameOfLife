@@ -22,11 +22,6 @@ namespace gcf
         window.draw(rect);
     }
 
-    void Cell::setColor(sf::Color color)
-    {
-        rect.setFillColor(color);
-    }
-
     void Cell::clicked()
     {
         if((state == State::Alive )&&(sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)))

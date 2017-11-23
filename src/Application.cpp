@@ -18,12 +18,12 @@ namespace gcf
 
     int Application:: run()
     {
-        while (window.isOpen())
+        while (window.isOpen())     //Main loop
         {
             handleInput();
             handleEvents();
 
-            if (runUpdate)
+            if (runUpdate)      //Stopping and starting logic
                 grid.update();
 
             //Drawing of all Objects
@@ -38,31 +38,38 @@ namespace gcf
     {
         sf::Event e;
 
-       while(window.pollEvent(e))
-       {
-           switch (e.type)
-           {
-               case sf::Event::Closed:
-                   window.close();
-                   break;
-           }
-       }
+        while(window.pollEvent(e))  //SFML Event handling
+        {
+            switch (e.type)
+            {
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+            }
+        }
     }
 
     void Application::handleInput()
     {
-        if(window.hasFocus())
+        if(window.hasFocus())   //Input Handling
         {
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))    //Start Logic
             {
                 runUpdate = true;
             }
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::P))
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::P))    //Pause logic
             {
                 runUpdate = false;
             }
 
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::C) && !runUpdate)    //Pause logic
+            {
+                grid.clear(State::Dead);
+            }
+
+
+            //Mouse Button pressed
             if((sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))||(sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)))
             {
                 if(mouseInWindow())

@@ -15,7 +15,7 @@ namespace gcf
     class Application
     {
     private:
-        Config conf;
+        Config &conf;
         Grid grid;
         sf::RenderWindow window;
         bool runUpdate;

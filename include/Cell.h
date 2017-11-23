@@ -11,26 +11,26 @@
 
 namespace gcf
 {
-    enum State
+    enum State  //State of cell
     {
         Dead,Alive
     };
 
-    class Cell {
+    class Cell
+    {
     private:
-        int x;
-        int y;
-        sf::RectangleShape rect;
-        State state;
+        int x;  //Stores x pos
+        int y;  //Stores y pos
+        sf::RectangleShape rect;    //Rectangle to be drawn
+        State state;    //State of the cell
 
     public:
         Cell(int x,int y, Config conf,State state);
-        void update(std::vector<std::vector<gcf::Cell>>&grid,gcf::Config &conf);
-        void draw(sf::RenderWindow &window);
-        void setColor(sf::Color color);
-        void clicked();
-        void setState(State state);
-        State getState();
+        void update(std::vector<std::vector<gcf::Cell>>&grid,gcf::Config &conf);    //Logic
+        void draw(sf::RenderWindow &window);    //Draws rect on window
+        void clicked(); //Updates Cell State depending on button Clicked
+        void setState(State state);     //Sets State and corresponding color
+        State getState();   //Returns State of cell
     };
 
 
