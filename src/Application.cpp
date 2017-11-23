@@ -51,21 +51,24 @@ namespace gcf
 
     void Application::handleInput()
     {
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+        if(window.hasFocus())
         {
-            runUpdate = true;
-        }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::P))
-        {
-            runUpdate = false;
-        }
-
-        if((sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))||(sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)))
-        {
-            if(mouseInWindow())
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
             {
-                cellClicked();
+                runUpdate = true;
+            }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::P))
+            {
+                runUpdate = false;
+            }
+
+            if((sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))||(sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)))
+            {
+                if(mouseInWindow())
+                {
+                    cellClicked();
+                }
             }
         }
     }
